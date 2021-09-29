@@ -37,6 +37,8 @@ MVC atau Model View Controller adalah sebuah pola desain arsitektur dalam sistem
 * View, bagian yang akan menyajikan tampilan informasi kepada pengguna;
 * Controller, bagian yang menghubungkan model dan view dalam setiap proses request dari user.
 
+![MVC](Model-View-Controller-High-Level-Diagram.png)
+
 Dengan konsep MVC ini, website seakan memiliki bagian yang terpisah dan bisa dikembangkan masing-masing. Maka, proses pembuatan website bisa dilakukan lebih cepat karena developer akan lebih fokus pada pengerjaan salah satu bagian saja. 
 Karena dianggap efektif, konsep MVC banyak diterapkan di berbagai framework.
 
