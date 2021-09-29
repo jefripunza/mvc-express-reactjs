@@ -1,11 +1,14 @@
 # MVC-EXPRESS-REACTJS
+
 ![banner](banner.png)
 
 ---
 
 [![Custom badge](https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fjefripunza-youtube-channel-badge.vercel.app%2Fapi%2Fsubscriber)](https://www.youtube.com/user/jefripunza/videos/)
 [![Custom badge](https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fjefripunza-youtube-channel-badge.vercel.app%2Fapi%2Fviews)](https://www.youtube.com/user/jefripunza/videos/)
+
 <!-- [![Custom badge](https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fjefripunza-youtube-channel-badge.vercel.app%2Fapi%2Fcomments)](https://www.youtube.com/user/jefripunza/videos/) -->
+
 [![Custom badge](https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fjefripunza-youtube-channel-badge.vercel.app%2Fapi%2Fvideos)](https://www.youtube.com/user/jefripunza/videos/)
 
 ## Donate
@@ -21,10 +24,8 @@
 [![Custom badge](https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jefri-herdi-triyanto-ba76a8106/)
 [![Custom badge](https://img.shields.io/badge/Website-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)](https://jefriherditriyanto.com/)
 
-
-
-
 ## Introduction
+
 [![Custom badge](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/downloads)
 [![Custom badge](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Custom badge](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
@@ -32,29 +33,26 @@
 [![Custom badge](https://img.shields.io/badge/react_js-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
 [![Custom badge](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 
+MVC atau Model View Controller adalah sebuah pola desain arsitektur dalam sistem pengembangan website yang terdiri dari tiga bagian, yaitu:
 
-MVC atau Model View Controller adalah sebuah pola desain arsitektur dalam sistem pengembangan website yang terdiri dari tiga bagian, yaitu: 
-* Model, bagian yang mengelola dan berhubungan langsung dengan database; 
-* View, bagian yang akan menyajikan tampilan informasi kepada pengguna;
-* Controller, bagian yang menghubungkan model dan view dalam setiap proses request dari user.
+- Model, bagian yang mengelola dan berhubungan langsung dengan database;
+- View, bagian yang akan menyajikan tampilan informasi kepada pengguna;
+- Controller, bagian yang menghubungkan model dan view dalam setiap proses request dari user.
 
 ![MVC](MVC-architecture.png)
 
-Dengan konsep MVC ini, website seakan memiliki bagian yang terpisah dan bisa dikembangkan masing-masing. Maka, proses pembuatan website bisa dilakukan lebih cepat karena developer akan lebih fokus pada pengerjaan salah satu bagian saja. 
+Dengan konsep MVC ini, website seakan memiliki bagian yang terpisah dan bisa dikembangkan masing-masing. Maka, proses pembuatan website bisa dilakukan lebih cepat karena developer akan lebih fokus pada pengerjaan salah satu bagian saja.
 Karena dianggap efektif, konsep MVC banyak diterapkan di berbagai framework.
 
 Melihat dari beberapa kelebihan dari MVC maka saya membuat repositori ini agar saya dan kawan-kawan bisa merasakan bagaimana menggunakan konsep MVC di NodeJS.
 Mudah-mudahan bermanfaat...
 
-
 ---
+
 <br />
 <b></b>
 
-
-
-
-## Software Request
+## Software & Account Request
 
 Aplikasi yang wajib digunakan jika belum punya adalah :
 
@@ -70,91 +68,101 @@ Dan akun yang harus punya yaitu :
 
 2. ngrok [<a href="https://ngrok.com/" target="_blank">link</a>]
 
-
-
-
 <br />
 
 ---
+
 <br />
-
-
-
 
 ## Preparation
 
 Langkah awal untuk menggunakan template ini yaitu :
 
 ##### install requirements
+
 ```bash
 node run require
 ```
 
 ##### install node_modules
+
 ```bash
 node run install
 ```
 
 jika selesai maka project sudah siap digunakan. :)
 
-
-
-
 <br />
 
 ---
+
 <br />
-
-
-
 
 ## How to USE
 
-### judul step
+### Access Application
 
-##### judul script
-```javascript
-//  request argument :
-//      select key (object) = pilih key yang value nya ingin di cari
-//      show = berapa data yang ingin ditampilkan
-//      page = sekarang dihalaman berapa
-//      button_page = jumlah alinyemen button
+##### main app
 
-// for test
-const keyword = "and or on for in is woman";
-
-console.log(database.searchWithPagination({
-    description: keyword,
-    title: keyword,
-    category: keyword,
-}, show, page, button_page));
+```bash
+http://localhost:5000
 ```
 
+##### template (if running)
 
+```bash
+http://localhost:4000
+```
 
+##### reactjs (direct)
 
+```bash
+http://localhost:3000
+```
 
+### Start Project
 
+##### main app
 
+```bash
+node run start
+```
 
+##### template (on folder template)
 
+```bash
+node run template
+```
 
+##### push localhost (main app) to internet (with ngrok)
+
+```bash
+node run ngrok
+```
+
+### Build Project (to be accessible at port 5000)
+
+```bash
+node run build
+```
+
+### Create README.md
+
+```bash
+node run create-readme "your-name-project"
+```
+
+### Push to Github Repository
+
+```bash
+node run push-github "commit-message"
+```
 
 <br />
 
 ---
+
 <br />
-
-
-
-
-
-
-
-
-
-
-
 
 ## Support the project
 
