@@ -1,11 +1,17 @@
 const config = {
+    // Application init
     app_name: "MVC NodeJS ReactJS",
     description: "this is website programming MVC environment",
 
-    // system
-    password_encrypt: "mvc", // change this for new secure
+    // Github Config
+    template_markdown: "https://raw.githubusercontent.com/jefripunza/storage/main/README.md", // include "{{judul_project}}" for replace to name project
+
+    // your secure
+    password_encrypt: "mvc", // change this for new security (only once)
+
+    // system access
     environment: process.env.NODE_ENV,
-    production: process.env.NODE_ENV.includes("production") ? true : false,
+    production: String(process.env.NODE_ENV).includes("production") ? true : false,
 }
 
 module.exports = {

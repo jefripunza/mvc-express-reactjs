@@ -12,6 +12,7 @@ const { clear } = require("./utils/system");
 const { writeFile } = require("./utils/fs")
 const { replaceAll } = require("./helper/data");
 const { requestGet } = require('./utils/axios');
+const { config } = require('./config');
 
 // =========================== DEFINE ==========================
 const path_frontend = path.join(__dirname, "frontend"),
@@ -182,26 +183,20 @@ if (mode) {
         });
 
     } else if (mode === "create-readme") {
-        const name_project = process.argv[3];
-        if (name_project !== undefined) {
-            requestGet("https://raw.githubusercontent.com/jefripunza/storage/main/README.md", result => {
-                writeFile(path.join(__dirname, "README.md"), replaceAll(result, "{{judul_project}}", name_project), () => {
-                    print("README.md added!", "success");
-                    closeApp();
-                }, error => {
-                    print(error, "error");
-                    closeApp(false);
-                })
+        requestGet(config.template_markdown, result => {
+            writeFile(path.join(__dirname, "README.md"), replaceAll(result, "{{judul_project}}", config.app_name), () => {
+                print("README.md added!", "success");
+                closeApp();
             }, error => {
                 print(error, "error");
                 closeApp(false);
-            }, () => {
-                //
-            }, false)
-        } else {
-            print("name project?", "error");
+            })
+        }, error => {
+            print(error, "error");
             closeApp(false);
-        }
+        }, () => {
+            //
+        }, false)
 
     } else if (mode === "push-github") {
         const commit_message = process.argv[3];

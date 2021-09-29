@@ -90,6 +90,22 @@ node run require
 node run install
 ```
 
+##### edit config.js
+
+```txt
+...
+    // Application init
+    app_name: "MVC NodeJS ReactJS",
+    description: "this is website programming MVC environment",
+
+    // Github Config
+    template_markdown: "https://raw.githubusercontent.com/jefripunza/storage/main/README.md", // include "{{judul_project}}" for replace to name project
+
+    // your secure
+    password_encrypt: "mvc", // change this for new security (only once)
+...
+```
+
 jika selesai maka project sudah siap digunakan. :)
 
 <br />
@@ -149,7 +165,7 @@ node run build
 ### Create README.md
 
 ```bash
-node run create-readme "your-name-project"
+node run create-readme
 ```
 
 ### Push to Github Repository
