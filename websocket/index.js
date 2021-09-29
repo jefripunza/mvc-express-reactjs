@@ -1,4 +1,5 @@
 // ================================================================================================================
+const fs = require("fs");
 const path = require("path");
 
 // ================================================================================================================
@@ -38,7 +39,19 @@ setInterval(() => {
     }
 }, 500);
 
+// create folder if not exist
 const path_chat = path.join(__dirname, "..", "models", "database", "chat");
+const path_info_chat = path.join(__dirname, "..", "models", "database", "info_chat");
+if (!fs.existsSync(path_chat)) {
+    fs.mkdirSync(path_chat, {
+        recursive: true
+    });
+}
+if (!fs.existsSync(path_info_chat)) {
+    fs.mkdirSync(path_info_chat, {
+        recursive: true
+    });
+}
 
 module.exports = (server, app) => {
     const io = require("./io")(server);
@@ -50,12 +63,12 @@ module.exports = (server, app) => {
                 const email = item.replace(/^.*[\\\/]/, '').split(".")[0];
                 //
                 // add database chat
-                const path_chat = path.join(__dirname, "..", "models", "database", "chat", email + ".json");
-                database[email] = new Database(path_chat, []);
+                const file_chat = path.join(path_chat, email + ".json");
+                database[email] = new Database(file_chat, []);
                 //
                 // add info chat
-                const path_info_chat = path.join(__dirname, "..", "models", "database", "info_chat", email + ".json");
-                datakey[email] = new DataKey(path_info_chat)
+                const file_info_chat = path.join(path_info_chat, email + ".json");
+                datakey[email] = new DataKey(file_info_chat)
             });
         }
     })
@@ -69,8 +82,8 @@ module.exports = (server, app) => {
                         result.file
                             .map(item => {
                                 const email = item.replace(/^.*[\\\/]/, '').split(".")[0];
-                                const path_info_chat = path.join(__dirname, "..", "models", "database", "info_chat", email + ".json");
-                                const client = JSON.parse(readFile(path_info_chat));
+                                const file_info_chat = path.join(path_info_chat, email + ".json");
+                                const client = JSON.parse(readFile(file_info_chat));
                                 client.online = Object.values(online).some(v => {
                                     return email === v.email
                                 });

@@ -173,12 +173,13 @@ if (mode) {
         });
     } else if (mode === "push-github") {
         const commit_message = process.argv[3];
-        if (commit_message) {
+        // console.log(`git add . && git commit -m "${commit_message}" && git push -u origin main --force`);
+        if (String(commit_message).length > 0) {
             execute(`git add . && git commit -m "${commit_message}" && git push -u origin main --force`, () => {
                 print("repository now is update!", "success");
                 closeApp();
             })
-        }else{
+        } else {
             print("commit message?", "error");
             closeApp();
         }

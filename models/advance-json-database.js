@@ -1,16 +1,19 @@
 const fs = require('fs');
+
 const print = require("../utils/print");
 const { generateRandomString } = require("../helper/generate");
 const { digitCount, get_keywords } = require("../helper/database");
 
 class Database {
     constructor(file_db, default_value = [], generate = true) {
+        // manipulate
+        // const this_path = file_db.substring(0, file_db.lastIndexOf("\\") + 1);
         const fix_file_db = file_db.substr(0, file_db.lastIndexOf(".")) + ".json"; // only json extension
+        //
         // declare
         this.file_db = fix_file_db;
         this.default_value = default_value;
         this.generate = generate;
-        //
         if (!fs.existsSync(fix_file_db)) {
             if (Array.isArray(default_value)) {
                 this.#write(this.#createID(default_value, generate), () => {
@@ -203,6 +206,32 @@ class Database {
             }
         } else {
             print("wrong input!", "error");
+            result(false);
+        }
+    }
+    updateAll(new_data_array_with_id, result) {
+        if (
+            typeof new_data_array_with_id === 'object' &&
+            Array.isArray(new_data_array_with_id) &&
+            new_data_array_with_id !== null
+        ) {
+            const new_data = this.readAll().map(data => {
+                const data_id = data._id;
+                if (new_data_array_with_id.some(v => {
+                    return v._id === data_id
+                })) {
+                    return new_data_array_with_id.filter(item => {
+                        return item._id === data_id
+                    })[0]
+                } else {
+                    return data; // not change
+                }
+            });
+            this.#write(new_data, hasil => {
+                result(hasil)
+            });
+        } else {
+            print("key object require!", "error");
             result(false);
         }
     }
