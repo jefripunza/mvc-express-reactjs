@@ -27,7 +27,7 @@ function closeApp(status = true) {
     setTimeout(() => {
         if (status) {
             print("happy hacking!", "success");
-        }else{
+        } else {
             print("Oh Nooooo!", "error");
         }
         process.exit()
@@ -205,7 +205,7 @@ if (mode) {
 
     } else if (mode === "push-github") {
         const commit_message = process.argv[3];
-        if (String(commit_message).length > 0) {
+        if (commit_message !== undefined) {
             execute(`git add . && git commit -m "${commit_message}" && git branch -M main && git push -u origin main --force`, () => {
                 print("repository now is update!", "success");
                 closeApp();
