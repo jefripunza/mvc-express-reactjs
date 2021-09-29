@@ -170,8 +170,24 @@ node run create-readme
 
 ### Push to Github Repository
 
+jangan lupa untuk mengedit file `config.js` agar semua kegiatan yang ada didalam github lancar dan tepat sasaran...
+
+##### init
+
 ```bash
-node run push-github "commit-message"
+node run github init
+```
+
+##### first commit
+
+```bash
+node run github first
+```
+
+##### push
+
+```bash
+node run github push "commit-message"
 ```
 
 <br />

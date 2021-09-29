@@ -203,20 +203,31 @@ if (mode) {
         });
 
     } else if (mode === "create-readme") {
-        createMarkdown();
+        createMarkdown(() => {
+            print("README.md Created!", "success");
+            closeApp();
+        })
 
     } else if (mode === "github") {
         const menu = process.argv[3];
         if (menu === "init") {
             execute(`git init`, () => {
-                print("Github initial OK!", "success");
-                createMarkdown(() => {
-                    execute(`git add README.md && git commit -m "first commit" && git branch -M main && git remote add origin ${config.github_repository} && git push -u origin main --force`, () => {
-                        print("Github First Commit OK!", "success");
-                        closeApp();
-                    })
+                print("Github initial DONE!", "success");
+                execute(`git remote add origin ${config.github_repository}`, () => {
+                    print("Github Initial DONE!", "success");
+                    closeApp();
                 })
             })
+        } else if (menu === "first") {
+            if (fs.existsSync(path.join(__dirname, "README.md"))) {
+                execute(`git add README.md && git commit -m "first commit" && git branch -M main && git remote add origin ${config.github_repository} && git push -u origin main --force`, () => {
+                    print("Github First Commit DONE!", "success");
+                    closeApp();
+                })
+            } else {
+                print("README.md not found, please run : node run create-readme", "error");
+                closeApp(false);
+            }
         } else if (menu === "push") {
             const commit_message = process.argv[4];
             if (commit_message !== undefined) {
