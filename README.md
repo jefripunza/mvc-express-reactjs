@@ -64,6 +64,8 @@ Aplikasi & Akun yang wajib digunakan jika belum punya adalah :
 
 3. Akun NGROK [link](https://ngrok.com/)]
 
+<a href="https://example.com" target="_blank" rel="noopener"><span>Example Text</span> </a>
+
 
 
 
