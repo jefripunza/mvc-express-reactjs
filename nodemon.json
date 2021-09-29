@@ -1,0 +1,8 @@
+{
+    "ignore": [
+        "frontend/*",
+        "x-sources/*",
+        "models/database/*",
+        "*.json"
+    ]
+}

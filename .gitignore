@@ -1,0 +1,7 @@
+.vscode
+
+node_modules/
+x-sources/
+yarn.lock
+
+# frontend
