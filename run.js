@@ -77,7 +77,7 @@ function execute(cmd, onFinish, dirname = __dirname) {
 }
 function createMarkdown(onFinish = false) {
     requestGet(config.template_markdown, result => {
-        writeFile(path.join(__dirname, "README.md"), replaceAll(result, "{{judul_project}}", config.app_name), () => {
+        writeFile(path.join(__dirname, "README.md"), replaceAll(result, "{{app_name}}", config.app_name), () => {
             print("README.md added!", "success");
             if (onFinish) {
                 onFinish()
