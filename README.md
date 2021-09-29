@@ -25,6 +25,7 @@
 
 
 ## Introduction
+[![Custom badge](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/downloads)
 [![Custom badge](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Custom badge](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
 [![Custom badge](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://www.javascript.com/)
@@ -49,6 +50,29 @@ Mudah-mudahan bermanfaat...
 ---
 <br />
 <b></b>
+
+
+
+
+## Software Request
+
+Aplikasi & Akun yang wajib digunakan jika belum punya adalah :
+
+1. NodeJS
+[link ke NodeJS](https://nodejs.org/)
+
+2. GitBash
+[link ke GitBash](https://git-scm.com/downloads)
+
+3. Akun NGROK [[link ke NGROK](https://ngrok.com/)]
+
+
+
+
+<br />
+
+---
+<br />
 
 
 
