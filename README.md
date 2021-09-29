@@ -56,15 +56,19 @@ Mudah-mudahan bermanfaat...
 
 ## Software Request
 
-Aplikasi & Akun yang wajib digunakan jika belum punya adalah :
+Aplikasi yang wajib digunakan jika belum punya adalah :
 
 1. NodeJS [<a href="https://nodejs.org/" target="_blank">link</a>]
 
-2. GitBash [link](https://git-scm.com/downloads){:target="_blank"}
+2. GitBash [<a href="https://git-scm.com/downloads" target="_blank">link</a>]
 
-3. Akun NGROK [link](https://ngrok.com/)]
+3. XAMPP [<a href="https://www.apachefriends.org/download.html" target="_blank">link</a>]
 
-<a href="https://example.com" target="_blank" rel="noopener"><span>Example Text</span> </a>
+Dan akun yang harus punya yaitu :
+
+1. github [<a href="https://github.com/" target="_blank">link</a>]
+
+2. ngrok [<a href="https://ngrok.com/" target="_blank">link</a>]
 
 
 
