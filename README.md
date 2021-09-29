@@ -33,7 +33,7 @@
 
 
 MVC atau Model View Controller adalah sebuah pola desain arsitektur dalam sistem pengembangan website yang terdiri dari tiga bagian, yaitu: 
-* Model, bagian yang mengelola dan berhubungan langsung dengan database;
+* Model, bagian yang mengelola dan berhubungan langsung dengan database; 
 * View, bagian yang akan menyajikan tampilan informasi kepada pengguna;
 * Controller, bagian yang menghubungkan model dan view dalam setiap proses request dari user.
 
