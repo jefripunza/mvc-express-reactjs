@@ -4,12 +4,14 @@ const child_process = require('child_process'),
     fse = require('fs-extra'),
     path = require("path"),
     JSSoup = require('jssoup').default,
-    minify = require('html-minifier').minify;
+    minify = require('html-minifier').minify
+
 
 const print = require("./utils/print");
 const { clear } = require("./utils/system");
 const { writeFile } = require("./utils/fs")
-const { replaceAll } = require("./helper/data")
+const { replaceAll } = require("./helper/data");
+const { requestGet } = require('./utils/axios');
 
 // =========================== DEFINE ==========================
 const path_frontend = path.join(__dirname, "frontend"),
@@ -21,9 +23,13 @@ const path_html = path.join(path_public, "index.html"),
     path_ejs = path.join(path_views, "index.ejs")
 
 // ========================== FUNCTION =========================
-function closeApp() {
+function closeApp(status = true) {
     setTimeout(() => {
-        print("happy hacking!", "success");
+        if (status) {
+            print("happy hacking!", "success");
+        }else{
+            print("Oh Nooooo!", "error");
+        }
         process.exit()
     }, 200);
 }
@@ -42,7 +48,8 @@ const resetPublicFolder = function (directoryPath, onSuccess = false) {
         try {
             fs.rmdirSync(directoryPath);
         } catch (error) {
-            // console.log(error);
+            print(error, "error");
+            closeApp(false);
         }
         if (onSuccess) {
             setTimeout(() => {
@@ -72,7 +79,17 @@ function execute(cmd, onFinish, dirname = __dirname) {
 clear(); // space CLI
 const mode = process.argv[2];
 if (mode) {
-    if (mode === "install") {
+    if (mode === "require") {
+        print("Starting installation yarn....", "title");
+        execute("npm install -g yarn", () => {
+            print("yarn success!", "success");
+            print("Starting installation nodemon....", "title");
+            execute("npm install -g nodemon", () => {
+                print("nodemon success!", "success");
+                closeApp();
+            });
+        });
+    } else if (mode === "install") {
         print("Starting installation....", "title");
         const cmd = `yarn install && cd frontend && yarn install`;
         print("cmd : " + cmd, "notice");
@@ -81,17 +98,10 @@ if (mode) {
             closeApp();
         });
 
-    } else if (mode === "dev") {
-        newTerminal("SET NODE_ENV=development && nodemon");
-        closeApp();
-    } else if (mode === "reactjs") {
-        newTerminal("cd frontend && yarn start");
-        closeApp();
-    } else if (mode === "start") { // combine
+    } else if (mode === "start") {
         newTerminal("SET NODE_ENV=development && nodemon");
         newTerminal("cd frontend && yarn start");
         closeApp();
-
     } else if (mode === "template") {
         newTerminal("cd system && nodemon template.js");
         closeApp();
@@ -109,9 +119,10 @@ if (mode) {
                 setTimeout(() => {
                     resetPublicFolder(path_public, () => {
                         print("reset folder public!", "success");
-                        fse.copy(path_build, path_public, function (err) {
-                            if (err) {
-                                console.error(err);
+                        fse.copy(path_build, path_public, function (error) {
+                            if (error) {
+                                print(error, "error");
+                                closeApp(false);
                             } else {
                                 print("copy all data from build to public!", "success");
                                 // process index.html to index.ejs
@@ -121,7 +132,6 @@ if (mode) {
                                     //
                                     // change title
                                     soup.find('title').string.replaceWith('<%= title %>')
-                                    // console.log("title", soup.find('title').text); // test
                                     //
                                     // change description content
                                     const meta = soup.findAll('meta');
@@ -132,7 +142,6 @@ if (mode) {
                                         }
                                     }
                                     soup.findAll('meta')[selector_meta_i].attrs.content = "<%= description %>"
-                                    // console.log("description", soup.findAll('meta')[selector_meta_i].attrs.content); // test
                                     let result = "<!DOCTYPE html>" + soup.prettify().split("\n").filter((v, i) => {
                                         return i > 1 ? true : false
                                     }).join("\n");
@@ -171,26 +180,45 @@ if (mode) {
                 }, 1000);
             }, 2000);
         });
-    } else if (mode === "readme-github") {
+
+    } else if (mode === "create-readme") {
         const name_project = process.argv[3];
+        if (name_project !== undefined) {
+            requestGet("https://raw.githubusercontent.com/jefripunza/storage/main/README.md", result => {
+                writeFile(path.join(__dirname, "README.md"), replaceAll(result, "{{judul_project}}", name_project), () => {
+                    print("README.md added!", "success");
+                    closeApp();
+                }, error => {
+                    print(error, "error");
+                    closeApp(false);
+                })
+            }, error => {
+                print(error, "error");
+                closeApp(false);
+            }, () => {
+                //
+            }, false)
+        } else {
+            print("name project?", "error");
+            closeApp(false);
+        }
 
     } else if (mode === "push-github") {
         const commit_message = process.argv[3];
         if (String(commit_message).length > 0) {
-            execute(`git add . && git commit -m "${commit_message}" && git push -u origin main --force`, () => {
+            execute(`git add . && git commit -m "${commit_message}" && git branch -M main && git push -u origin main --force`, () => {
                 print("repository now is update!", "success");
                 closeApp();
             })
         } else {
             print("commit message?", "error");
-            closeApp();
+            closeApp(false);
         }
 
     } else if (mode === "push-heroku") {
 
     } else if (mode === "test") {
-        closeApp();
-
+        //
     } else {
         print("mode not found!", "warning")
     }
