@@ -60,7 +60,7 @@ Aplikasi & Akun yang wajib digunakan jika belum punya adalah :
 
 1. NodeJS [<a href="https://nodejs.org/" target="_blank">link</a>]
 
-2. GitBash [link](https://git-scm.com/downloads){:target="_blank" rel="noopener"}
+2. GitBash [link](https://git-scm.com/downloads){:target="_blank"}
 
 3. Akun NGROK [link](https://ngrok.com/)]
 
