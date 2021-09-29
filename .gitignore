@@ -1,5 +1,8 @@
 .vscode
 
+models/database/chat/*
+models/database/info_chat/*
+
 node_modules/
 x-sources/
 yarn.lock
