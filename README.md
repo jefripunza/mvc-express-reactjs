@@ -31,7 +31,18 @@
 [![Custom badge](https://img.shields.io/badge/react_js-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
 [![Custom badge](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 
-Blablablablablablablablablablablablablablablablablablablablablablabla....
+
+MVC atau Model View Controller adalah sebuah pola desain arsitektur dalam sistem pengembangan website yang terdiri dari tiga bagian, yaitu: 
+* Model, bagian yang mengelola dan berhubungan langsung dengan database;
+* View, bagian yang akan menyajikan tampilan informasi kepada pengguna;
+* Controller, bagian yang menghubungkan model dan view dalam setiap proses request dari user.
+
+Dengan konsep MVC ini, website seakan memiliki bagian yang terpisah dan bisa dikembangkan masing-masing. Maka, proses pembuatan website bisa dilakukan lebih cepat karena developer akan lebih fokus pada pengerjaan salah satu bagian saja. 
+Karena dianggap efektif, konsep MVC banyak diterapkan di berbagai framework.
+
+Melihat dari beberapa kelebihan dari MVC maka saya membuat repositori ini agar saya dan kawan-kawan bisa merasakan bagaimana menggunakan konsep MVC di NodeJS.
+Mudah-mudahan bermanfaat...
+
 
 ---
 <br />
