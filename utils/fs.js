@@ -72,8 +72,18 @@ function listFileFromDir(directoryPath, onResult) {
     });
 }
 
+function mkdirIfNotExist(path_dir) {
+    if (!fs.existsSync(path_dir)) {
+        fs.mkdirSync(path_dir, {
+            recursive: true
+        });
+    }
+}
+
 module.exports = {
+    mkdirIfNotExist,
     isFileFolderExist,
+    //
     mkdir,
     //
     readFile,

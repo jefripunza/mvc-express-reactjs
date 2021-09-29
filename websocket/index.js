@@ -11,7 +11,7 @@ const {
     Database,
     DataKey,
 } = require("../models/advance-json-database");
-const { readFile, writeFile, isFileFolderExist, listFileFromDir } = require("../utils/fs");
+const { readFile, writeFile, isFileFolderExist, listFileFromDir, mkdirIfNotExist } = require("../utils/fs");
 
 // ================================================================================================================
 let online = {};
@@ -42,16 +42,8 @@ setInterval(() => {
 // create folder if not exist
 const path_chat = path.join(__dirname, "..", "models", "database", "chat");
 const path_info_chat = path.join(__dirname, "..", "models", "database", "info_chat");
-if (!fs.existsSync(path_chat)) {
-    fs.mkdirSync(path_chat, {
-        recursive: true
-    });
-}
-if (!fs.existsSync(path_info_chat)) {
-    fs.mkdirSync(path_info_chat, {
-        recursive: true
-    });
-}
+mkdirIfNotExist(path_chat)
+mkdirIfNotExist(path_info_chat)
 
 module.exports = (server, app) => {
     const io = require("./io")(server);

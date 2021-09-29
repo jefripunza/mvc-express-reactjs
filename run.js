@@ -171,9 +171,11 @@ if (mode) {
                 }, 1000);
             }, 2000);
         });
+    } else if (mode === "readme-github") {
+        const name_project = process.argv[3];
+
     } else if (mode === "push-github") {
         const commit_message = process.argv[3];
-        // console.log(`git add . && git commit -m "${commit_message}" && git push -u origin main --force`);
         if (String(commit_message).length > 0) {
             execute(`git add . && git commit -m "${commit_message}" && git push -u origin main --force`, () => {
                 print("repository now is update!", "success");
@@ -183,6 +185,9 @@ if (mode) {
             print("commit message?", "error");
             closeApp();
         }
+
+    } else if (mode === "push-heroku") {
+
     } else if (mode === "test") {
         closeApp();
 
