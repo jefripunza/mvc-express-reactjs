@@ -4,6 +4,7 @@ const config = {
     description: "this is website programming MVC environment",
 
     // Github Config
+    github_repository: "https://github.com/jefripunza/mvc-express-reactjs.git",
     template_markdown: "https://raw.githubusercontent.com/jefripunza/storage/main/README.md", // include "{{judul_project}}" for replace to name project
 
     // your secure

@@ -75,6 +75,26 @@ function execute(cmd, onFinish, dirname = __dirname) {
         }
     }).stdout.pipe(process.stdout);
 }
+function createMarkdown(onFinish = false) {
+    requestGet(config.template_markdown, result => {
+        writeFile(path.join(__dirname, "README.md"), replaceAll(result, "{{judul_project}}", config.app_name), () => {
+            print("README.md added!", "success");
+            if (onFinish) {
+                onFinish()
+            } else {
+                closeApp();
+            }
+        }, error => {
+            print(error, "error");
+            closeApp(false);
+        })
+    }, error => {
+        print(error, "error");
+        closeApp(false);
+    }, () => {
+        //
+    }, false)
+}
 
 // ============================ MAIN ===========================
 clear(); // space CLI
@@ -183,31 +203,31 @@ if (mode) {
         });
 
     } else if (mode === "create-readme") {
-        requestGet(config.template_markdown, result => {
-            writeFile(path.join(__dirname, "README.md"), replaceAll(result, "{{judul_project}}", config.app_name), () => {
-                print("README.md added!", "success");
-                closeApp();
-            }, error => {
-                print(error, "error");
-                closeApp(false);
-            })
-        }, error => {
-            print(error, "error");
-            closeApp(false);
-        }, () => {
-            //
-        }, false)
+        createMarkdown();
 
-    } else if (mode === "push-github") {
-        const commit_message = process.argv[3];
-        if (commit_message !== undefined) {
-            execute(`git add . && git commit -m "${commit_message}" && git branch -M main && git push -u origin main --force`, () => {
-                print("repository now is update!", "success");
-                closeApp();
+    } else if (mode === "github") {
+        const menu = process.argv[3];
+        if (menu === "init") {
+            execute(`git init`, () => {
+                print("Github initial OK!", "success");
+                createMarkdown(() => {
+                    execute(`git add README.md && git commit -m "first commit" && git branch -M main && git remote add origin ${config.github_repository} && git push -u origin main --force`, () => {
+                        print("Github First Commit OK!", "success");
+                        closeApp();
+                    })
+                })
             })
-        } else {
-            print("commit message?", "error");
-            closeApp(false);
+        } else if (menu === "push") {
+            const commit_message = process.argv[4];
+            if (commit_message !== undefined) {
+                execute(`git add . && git commit -m "${commit_message}" && git branch -M main && git push -u origin main --force`, () => {
+                    print("repository now is update!", "success");
+                    closeApp();
+                })
+            } else {
+                print("commit message?", "error");
+                closeApp(false);
+            }
         }
 
     } else if (mode === "push-heroku") {
