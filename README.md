@@ -136,6 +136,8 @@ http://localhost:4000
 http://localhost:3000
 ```
 
+<br />
+
 ### Start Project
 
 ##### main app
@@ -156,17 +158,23 @@ node run template
 node run ngrok
 ```
 
+<br />
+
 ### Build Project (to be accessible at port 5000)
 
 ```bash
 node run build
 ```
 
+<br />
+
 ### Create README.md
 
 ```bash
 node run create-readme
 ```
+
+<br />
 
 ### Push to Github Repository
 
