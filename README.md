@@ -55,51 +55,19 @@ Mudah-mudahan bermanfaat...
 
 ## Preparation
 
-Tidak terlalu rumit untuk inisial awal, cukup copy saja file <b>connection.js</b> nya kedalam project anda lalu di import dan langsung bisa digunakan
+Langkah awal untuk menggunakan template ini yaitu :
 
-##### judul script
-```txt
-_id               = primary key (string|int)
-_create_at        = kapan dibuat (timestamp)
-_modified_at      = kapan terakhir dirubah (timestamp)
-_modified_history = history modifikasi data (array)
-_deleted_at       = menghapus sementara data dari list (tidak permanen)
-_SEO              = untuk keperluan SEO (integer)
-```
-
-
-
-
-<br />
-
----
-<br />
-
-
-
-
-## Testing
-untuk anda yang ingin mencoba perngalaman terbaik menggunakan module ini, silahkan ikuti step berikut ini :
-
-##### download this source
+##### install requirements
 ```bash
-git clone https://github.com/jefripunza/advance-json-database
+node run require
 ```
+
 ##### install node_modules
 ```bash
-npm install
+node run install
 ```
 
-buka file <b>test.js</b> dan ikuti perintah selanjutnya (indonesian language)
-
-##### running test
-```bash
-node test
-
-// or
-
-npm start
-```
+jika selesai maka project sudah siap digunakan. :)
 
 
 
