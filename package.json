@@ -4,6 +4,9 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
+        "deploy:dev": "vercel",
+        "deploy:prod": "vercel --prod",
+        "develop": "vercel dev",
         "start": "SET NODE_ENV=production && node ."
     },
     "dependencies": {
