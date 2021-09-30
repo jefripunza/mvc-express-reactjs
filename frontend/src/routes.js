@@ -17,7 +17,7 @@ import {
     PanelOrders,
     PanelChat,
 
-    PanelPagesGeneral,
+    PanelPagesBlankPage,
 
     PanelAccount,
     PanelNotifications,
@@ -160,12 +160,12 @@ const routes = [
         icon: "bi bi-files",
         submenu: [
             {
-                path: config.routes_frontend.panel.pages.general,
-                title: "General",
+                path: config.routes_frontend.panel.pages.blank_page,
+                title: "Blank Page",
                 render: (props) => (
-                    <PanelPagesGeneral
+                    <PanelPagesBlankPage
                         {...props}
-                        title={"General" + separate + config.app_name}
+                        title={"Blank Page" + separate + config.app_name}
                     />
                 ),
             },

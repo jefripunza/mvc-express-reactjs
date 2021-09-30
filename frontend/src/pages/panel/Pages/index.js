@@ -1,5 +1,5 @@
-import PanelPagesGeneral from "./General";
+import PanelPagesBlankPage from "./BlankPage";
 
 export {
-    PanelPagesGeneral,
+    PanelPagesBlankPage,
 }

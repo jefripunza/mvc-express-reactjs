@@ -29,7 +29,7 @@ const config = {
             pages: {
                 index: "/pages",
                 //
-                general: "/general",
+                blank_page: "/blank-page",
             },
             //
             notifications: "/notifications",

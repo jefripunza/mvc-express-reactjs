@@ -4,7 +4,7 @@ import PanelOrders from "./Orders";
 import PanelChat from "./Chat";
 
 import {
-    PanelPagesGeneral,
+    PanelPagesBlankPage,
 } from "./Pages";
 
 import PanelAccount from "./Account";
@@ -24,7 +24,7 @@ export {
     PanelOrders,
     PanelChat,
 
-    PanelPagesGeneral,
+    PanelPagesBlankPage,
 
     PanelAccount,
     PanelNotifications,
