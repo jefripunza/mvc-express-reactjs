@@ -122,57 +122,56 @@ module.exports = (server, app) => {
             //     client,
             //     online,
             // });
+        })
 
-            socket.on("chat:add_user", get => {
-                const email = get.email;
-                //
-                const file_email = email.split("@")[0]
+        socket.on("chat:add_user", get => {
+            const uuid = get.uuid;
+            const email = get.email;
+            //
+            const file_email = email.split("@")[0]
 
-                // add to online
-                online[socket_id] = {
-                    uuid,
-                    name: get.nama,
-                    fullname: get.nama_panjang,
-                    email: file_email,
-                }
-                // console.log("online:add_user", online);
+            // add to online
+            online[socket_id] = {
+                name: get.nama,
+                fullname: get.nama_panjang,
+                email: file_email,
+            }
+            // console.log("online:add_user", online);
 
-                // add database chat
-                const path_chat = path.join(__dirname, "..", "models", "database", "chat", file_email + ".json");
-                database[file_email] = new Database(path_chat, []);
-                //
-                // add info chat
-                const path_info_chat = path.join(__dirname, "..", "models", "database", "info_chat", file_email + ".json");
-                datakey[file_email] = new DataKey(path_info_chat, {
-                    uuid,
-                    email,
-                    nama: get.nama,
-                    nama_panjang: get.nama_panjang,
-                    foto: get.foto,
-                })
-                const last_message = database[file_email].read();
-                const send = {
-                    uuid,
-                    last_message,
-                }
-                // console.log(send);
-                io.sockets.emit('chat:last_message', send);
+            // add database chat
+            const path_chat = path.join(__dirname, "..", "models", "database", "chat", file_email + ".json");
+            database[file_email] = new Database(path_chat, []);
+            //
+            // add info chat
+            const path_info_chat = path.join(__dirname, "..", "models", "database", "info_chat", file_email + ".json");
+            datakey[file_email] = new DataKey(path_info_chat, {
+                email,
+                nama: get.nama,
+                nama_panjang: get.nama_panjang,
+                foto: get.foto,
             })
+            const last_message = database[file_email].read();
+            const send = {
+                uuid,
+                last_message,
+            }
+            // console.log(send);
+            io.sockets.emit('chat:last_message', send);
+        })
 
-            // admin chat
-            socket.on("admin:get_message", email => {
-                socket.emit("admin:client_message", database[email].read())
-            })
+        // live chat
+        socket.on("chat:message", message => {
+            database[message.from].add(message, () => {
+                io.sockets.emit('chat:message', message);
+            });
+        })
+        socket.on("chat:typing", typing => {
+            io.sockets.emit('chat:typing', message);
+        })
 
-            // live chat
-            socket.on("chat:message", message => {
-                database[message.from].add(message, () => {
-                    io.sockets.emit('chat:message', message);
-                });
-            })
-            socket.on("chat:typing", typing => {
-                io.sockets.emit('chat:typing', message);
-            })
+        // admin chat
+        socket.on("admin:get_message", email => {
+            socket.emit("admin:client_message", database[email].read())
         })
     });
     app.use(function (req, res, next) {

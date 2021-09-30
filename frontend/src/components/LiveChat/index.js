@@ -42,10 +42,11 @@ class index extends Component {
         }
     }
     chatMessage(lawan) {
-        console.log({ lawan });
+        // console.log({ lawan });
         if (localStorage.getItem("google_email") !== null && lawan.isAdmin && lawan.from === localStorage.getItem("google_email").split("@")[0]) { // add chat lawan
             const message = this.state.message;
             const new_message = {
+                isAdmin: lawan.isAdmin ? true : false,
                 uuid: lawan.uuid,
                 from: lawan.from,
                 foto: lawan.foto,
@@ -170,7 +171,7 @@ class index extends Component {
                                         <GoogleLogoutButton
                                             className="text-right"
                                             onSuccessLogout={() => {
-                                                console.log(this.state.google.profileObj.email)
+                                                // console.log(this.state.google.profileObj.email)
                                                 socket.emit("chat:logout", this.state.google.profileObj.email)
                                                 this.setState({
                                                     google: false,
@@ -178,7 +179,7 @@ class index extends Component {
                                                 localStorage.removeItem("google_email")
                                             }}
                                             onFailureLogout={failure => {
-                                                console.log({ failure })
+                                                // console.log({ failure })
                                                 //
                                             }}
                                         >Logout</GoogleLogoutButton>
