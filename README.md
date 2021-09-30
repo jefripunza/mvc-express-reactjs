@@ -116,28 +116,6 @@ jika selesai maka project sudah siap digunakan. :)
 
 ## How to USE
 
-### Access Application
-
-##### main app
-
-```bash
-http://localhost:5000
-```
-
-##### template (if running)
-
-```bash
-http://localhost:4000
-```
-
-##### reactjs (direct)
-
-```bash
-http://localhost:3000
-```
-
-<br />
-
 ### Start Project
 
 ##### main app
@@ -160,6 +138,28 @@ node run ngrok
 
 <br />
 
+### Access Application
+
+##### main app
+
+```bash
+http://localhost:5000
+```
+
+##### template (if running)
+
+```bash
+http://localhost:4000
+```
+
+##### reactjs (direct)
+
+```bash
+http://localhost:3000
+```
+
+<br />
+
 ### Build Project (to be accessible at port 5000)
 
 ```bash
@@ -169,6 +169,8 @@ node run build
 <br />
 
 ### Create README.md
+
+rubah template markdown anda didalam `config.js` pada bagian `template_markdown` (simpan saja didalam repository pada github anda)
 
 ```bash
 node run create-readme
