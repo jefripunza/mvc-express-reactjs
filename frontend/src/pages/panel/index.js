@@ -4,9 +4,11 @@ import PanelOrders from "./Orders";
 import PanelChat from "./Chat";
 
 import {
-    PanelPagesNotifications,
-    PanelPagesAccount,
+    PanelPagesGeneral,
 } from "./Pages";
+
+import PanelAccount from "./Account";
+import PanelNotifications from "./Notifications"
 
 import PanelBootstrap from "./Bootstrap";
 
@@ -22,8 +24,10 @@ export {
     PanelOrders,
     PanelChat,
 
-    PanelPagesNotifications,
-    PanelPagesAccount,
+    PanelPagesGeneral,
+
+    PanelAccount,
+    PanelNotifications,
 
     PanelBootstrap,
 

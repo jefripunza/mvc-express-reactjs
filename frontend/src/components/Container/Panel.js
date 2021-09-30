@@ -106,7 +106,7 @@ class Panel extends Component {
     makeMenuList(route) {
         return route.map((prop, key) => {
             if (prop.for.some((substring) =>
-                "panel" === substring
+                "sidebar" === substring
             )) {
                 const next_path = config.routes_frontend.layout.panel + prop.path;
                 if (prop.submenu) {

@@ -17,8 +17,10 @@ import {
     PanelOrders,
     PanelChat,
 
-    PanelPagesNotifications,
-    PanelPagesAccount,
+    PanelPagesGeneral,
+
+    PanelAccount,
+    PanelNotifications,
 
     PanelBootstrap,
 
@@ -91,7 +93,7 @@ const routes = [
         path: config.routes_frontend.panel.dashboard,
         for: [
             config.routes_frontend.layout.panel,
-            "panel",
+            "sidebar",
         ],
         title: "Dashboard",
         icon: "bi bi-house-door",
@@ -106,7 +108,7 @@ const routes = [
         path: config.routes_frontend.panel.docs,
         for: [
             config.routes_frontend.layout.panel,
-            "panel",
+            "sidebar",
         ],
         title: "Docs",
         icon: "bi bi-folder",
@@ -121,7 +123,7 @@ const routes = [
         path: config.routes_frontend.panel.orders,
         for: [
             config.routes_frontend.layout.panel,
-            "panel",
+            "sidebar",
         ],
         title: "Orders",
         icon: "bi bi-card-list",
@@ -136,7 +138,7 @@ const routes = [
         path: config.routes_frontend.panel.chat,
         for: [
             config.routes_frontend.layout.panel,
-            "panel",
+            "sidebar",
         ],
         title: "Chat",
         icon: "bi bi-chat-left-dots",
@@ -152,38 +154,61 @@ const routes = [
         path: config.routes_frontend.panel.pages.index,
         for: [
             config.routes_frontend.layout.panel,
-            "panel",
+            "sidebar",
         ],
         title: "Pages",
         icon: "bi bi-files",
         submenu: [
             {
-                path: config.routes_frontend.panel.pages.notifications,
-                title: "Notifications",
+                path: config.routes_frontend.panel.pages.general,
+                title: "General",
                 render: (props) => (
-                    <PanelPagesNotifications
+                    <PanelPagesGeneral
                         {...props}
-                        title={"Notifications" + separate + config.app_name}
-                    />
-                ),
-            },
-            {
-                path: config.routes_frontend.panel.pages.account,
-                title: "Account",
-                render: (props) => (
-                    <PanelPagesAccount
-                        {...props}
-                        title={"Account" + separate + config.app_name}
+                        title={"General" + separate + config.app_name}
                     />
                 ),
             },
         ],
     },
+
+
+    {
+        path: config.routes_frontend.panel.notifications,
+        for: [
+            config.routes_frontend.layout.panel,
+            "sidebar",
+        ],
+        title: "Notifications",
+        icon: "bi bi-bell",
+        render: (props) => (
+            <PanelNotifications
+                {...props}
+                title={"Notifications" + separate + config.app_name}
+            />
+        ),
+    },
+    {
+        path: config.routes_frontend.panel.account,
+        for: [
+            config.routes_frontend.layout.panel,
+            "sidebar",
+        ],
+        title: "Account",
+        icon: "bi bi-person-square",
+        render: (props) => (
+            <PanelAccount
+                {...props}
+                title={"Account" + separate + config.app_name}
+            />
+        ),
+    },
+
     // {
     //     path: config.routes_frontend.panel.bootstrap,
     //     for: [
     //         config.routes_frontend.layout.panel,
-    //         "panel",
+    //         "sidebar",
     //     ],
     //     title: "Bootstrap",
     //     icon: "bi bi-bootstrap",
@@ -202,7 +227,7 @@ const routes = [
         path: config.routes_frontend.panel.charts,
         for: [
             config.routes_frontend.layout.panel,
-            "panel",
+            "sidebar",
         ],
         title: "Charts",
         icon: "bi bi-bar-chart-line",
@@ -217,7 +242,7 @@ const routes = [
         path: config.routes_frontend.panel.help,
         for: [
             config.routes_frontend.layout.panel,
-            "panel",
+            "sidebar",
         ],
         title: "Help",
         icon: "bi bi-question-circle",

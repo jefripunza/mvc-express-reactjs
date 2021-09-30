@@ -29,9 +29,12 @@ const config = {
             pages: {
                 index: "/pages",
                 //
-                notifications: "/notifications",
-                account: "/account",
+                general: "/general",
             },
+            //
+            notifications: "/notifications",
+            account: "/account",
+            //
             bootstrap: {
                 index: "/bootstrap",
                 //

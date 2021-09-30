@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { config } from '../../../../config';
+import { config } from '../../../config';
 
 class Notification extends Component {
     componentDidMount() {
@@ -33,7 +33,7 @@ class Notification extends Component {
                     <div class="app-card-header px-4 py-3">
                         <div class="row g-3 align-items-center">
                             <div class="col-12 col-lg-auto text-center text-lg-start">
-                                <img class="profile-image" src={require("../../../../assets/images/profiles/profile-1.png").default} alt="" />
+                                <img class="profile-image" src={require("../../../assets/images/profiles/profile-1.png").default} alt="" />
                             </div>
                             {/* <!--//col--> */}
                             <div class="col-12 col-lg-auto text-center text-lg-start">
@@ -155,7 +155,7 @@ class Notification extends Component {
                     <div class="app-card-header px-4 py-3">
                         <div class="row g-3 align-items-center">
                             <div class="col-12 col-lg-auto text-center text-lg-start">
-                                <img class="profile-image" src={require("../../../../assets/images/profiles/profile-2.png").default} alt="" />
+                                <img class="profile-image" src={require("../../../assets/images/profiles/profile-2.png").default} alt="" />
                             </div>
                             {/* <!--//col--> */}
                             <div class="col-12 col-lg-auto text-center text-lg-start">
@@ -195,7 +195,7 @@ class Notification extends Component {
                     <div class="app-card-header px-4 py-3">
                         <div class="row g-3 align-items-center">
                             <div class="col-12 col-lg-auto text-center text-lg-start">
-                                <img class="profile-image" src={require("../../../../assets/images/profiles/profile-3.png").default} alt="" />
+                                <img class="profile-image" src={require("../../../assets/images/profiles/profile-3.png").default} alt="" />
                             </div>
                             {/* <!--//col--> */}
                             <div class="col-12 col-lg-auto text-center text-lg-start">

@@ -1,7 +1,5 @@
-import PanelPagesNotifications from "./Notifications";
-import PanelPagesAccount from "./Account"
+import PanelPagesGeneral from "./General";
 
 export {
-    PanelPagesNotifications,
-    PanelPagesAccount,
+    PanelPagesGeneral,
 }
