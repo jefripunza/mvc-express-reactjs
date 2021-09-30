@@ -23,7 +23,7 @@ class index extends Component {
             google: false,
         }
         this.chatLastMessage = this.chatLastMessage.bind(this)
-        this.chatMessage = this.chatMessage.bind(this)
+        this.newChatMessage = this.newChatMessage.bind(this)
     }
 
     uuid = localStorage.getItem("uuid");
@@ -31,7 +31,7 @@ class index extends Component {
     componentDidMount() {
         socket.on("chat:last_message", this.chatLastMessage); // listener
         //
-        socket.on("chat:message", this.chatMessage); // listener
+        socket.on("chat:message", this.newChatMessage); // listener
     }
     //==============================================================
     chatLastMessage(get) {
@@ -41,18 +41,10 @@ class index extends Component {
             })
         }
     }
-    chatMessage(lawan) {
-        // console.log({ lawan });
-        if (localStorage.getItem("google_email") !== null && lawan.isAdmin && lawan.from === localStorage.getItem("google_email").split("@")[0]) { // add chat lawan
+    newChatMessage(new_message) {
+        // console.log({ new_message });
+        if (localStorage.getItem("google_email") !== null && new_message.isAdmin && new_message.from === localStorage.getItem("google_email").split("@")[0]) { // add chat lawan
             const message = this.state.message;
-            const new_message = {
-                isAdmin: lawan.isAdmin ? true : false,
-                uuid: lawan.uuid,
-                from: lawan.from,
-                foto: lawan.foto,
-                message: lawan.message,
-                time: lawan.time,
-            };
             message.push(new_message);
             this.setState({
                 message,
@@ -63,7 +55,7 @@ class index extends Component {
     //==============================================================
     componentWillUnmount() {
         socket.off("chat:last_message", this.chatLastMessage) // listener off
-        socket.off("chat:message", this.chatMessage) // listener off
+        socket.off("chat:message", this.newChatMessage) // listener off
     }
 
     formatChatSaya(message, time) {
