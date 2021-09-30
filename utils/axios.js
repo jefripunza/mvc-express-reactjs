@@ -1,4 +1,11 @@
-const axios = require('axios').default;
+let axios;
+const { installNPM } = require("./npm")
+
+try {
+    axios = require('axios').default;
+} catch (error) {
+    installNPM();
+}
 
 function requestGet(url, onResult, onError, onFinish, debug = false) {
     axios.get(url)
