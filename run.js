@@ -200,7 +200,7 @@ if (mode) {
                                         removeAttributeQuotes: true,
                                         removeComments: true,
                                         // removeEmptyAttributes: true,
-                                        // removeEmptyElements: true,
+                                        // removeEmptyElements: true, // dangerous for react app
                                         removeOptionalTags: true,
                                         removeRedundantAttributes: true,
                                         removeScriptTypeAttributes: true,
